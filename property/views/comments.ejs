@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/_header.ejs")-%>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_horizontal-navbar.html -->
+      <%- include("partials/_horizontal-navbar.ejs") -%>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+            
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+                <div class="card" >
+                  <div class="card-body">
+
+                    <a href="javascript:window.history.back()" type="button" class="btn btn-default btn-sm mt-2 mt-sm-0 btn-icon-text">
+                        <i class="fa fa-arrow-left"></i> Back</a>
+                    
+                        <h3>Property Comments</h3>
+                        <br>
+                        <div class="row">
+                    <% if(comments){ %>
+
+                        <% for(var i=0;i<comments.length;i++){ %>
+
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <article class="comment">
+                                        <div class="d-flex">
+                                            <i class="icon fa fa-user"></i>
+                                            <span class="comment-name"><%=comments[i].full_name %></span>
+                                        </div>
+                                        <small class="comment-body">
+                                            <%=comments[i].comment_message %>
+                                        </small>
+                                    </article>
+                                </div>
+                            </div>
+
+                        
+                        <%}%>
+
+                    <%}%>
+
+                    <form class="card mb-3" action="add_comment" method="post">
+                        <div class="card-body">
+                            <article class="comment">
+                                <div class="d-flex mb-2">
+                                    <i class="icon fa fa-user"></i>
+                                    <span class="comment-name">Your Comment..</span>
+                                </div>
+
+                                <input type="hidden" name="property_id" value="<%=property_id%>">
+                                <textarea required name="comment_body" style="min-height: 200px;" class="form-control comment-body mb-2"></textarea>
+                            
+                                <button class="btn btn-primary float-right btn-flat btn-lg">Submit <i class="fa fa-send"></i></button>
+                            </article>
+                        </div>
+                    </form>
+                </div>
+                 
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <%- include("partials/_footer.ejs") -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <%- include("partials/_scripts.ejs") -%>
+  </body>
+</html>

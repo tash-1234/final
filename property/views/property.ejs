@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/_header.ejs")-%>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_horizontal-navbar.html -->
+      <%- include("partials/_horizontal-navbar.ejs") -%>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+            
+
+
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+                <div class="card" >
+                  <div class="card-body" >
+                    <% if(user.role=="tenant"){%>
+                    <h4>All available property</h4>
+                    <br>
+                    <div class="row">
+                    <% if(props){ %>
+                        <% for(var i=0;i<props.length;i++){ %>
+                          <div class="row">
+
+                            <div class="col-lg-3">
+                              <div class="card-body p-0">
+                                <img class="img-fluid w-100" src="assets/images/dashboard/img_2.jpg" alt="" />
+                              </div>
+                            </div>
+
+                            <div class="col-lg-9">
+                              <div class="card">
+                                <div class="card-body  text-dark">
+                                  <form action="add_like" method="post" class="d-flex justify-content-between">
+                                    <span></span>
+
+                                    <input type="hidden" name="user_id" value="<%=user.user_id%>">
+                                    <input type="hidden" name="property_id" value="<%=props[i].property_id%>">
+                                    <div>
+                                      <button class="btn btn-default btn-sm"> <i class="fa fa-thumbs-up text-info"></i></button>
+                                    </div>
+                                  </form>
+                                  <h5 class="font-weight-semibold"> <%=props[i].property_name %> at UGX <%=props[i].property_cost %>/month</h5>
+                                  <p class="text-grey"><i class="fa fa-map-marker" style="font-size: 16pt;"></i> <%=props[i].property_location %></p>
+                                  <div class="d-flex justify-content-between font-weight-semibold">
+                                    <a href="comments?property=<%=props[i].property_id%>" class="mb-0">
+                                      <i class="mdi mdi-comment"></i>Reviews 
+                                    </a>
+                                    <a href="add_payment?property=<%=props[i].property_id%>" class="btn btn-info btn-flat">Book now</a>
+                                  </div>
+                              </div>
+                              </div>
+                            </div>
+
+                          </div>
+                    
+                        <%}%>
+                    <%}%>
+                </div>
+
+                
+
+                <% }else{%>
+
+
+                  <h4>My Property</h4>
+                  <br>
+
+
+
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Cost</th>
+                        <th>Property Type</th>
+                        <th>Status</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+
+                    <% if(props){ %>
+                      <% for(var i=0;i<props.length;i++){ %>
+
+                        <tr>
+
+                          <td>
+                            <img src="assets/images/dashboard/img_2.jpg"  alt="">
+                            <br>
+                            <span><%=props[i].property_name %></span>
+                          </td>
+
+                          <td>
+                            <span><%=props[i].property_cost %></span>
+                          </td>
+
+                          <td>
+                            <span><%=props[i].property_type %></span>
+                          </td>
+
+                          <td>
+                            <span><%=props[i].property_status %></span>
+                          </td>
+
+                          <td>
+                            <button class="btn btn-sm btn-primary">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                          </td>
+
+                        </tr>
+
+
+                        <% } %>
+                        <% } %>
+                  </table>
+
+
+
+                <%}%>
+                 
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <%- include("partials/_footer.ejs") -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <%- include("partials/_scripts.ejs") -%>
+  </body>
+</html>

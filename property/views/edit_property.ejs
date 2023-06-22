@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/_header.ejs")-%>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_horizontal-navbar.html -->
+      <%- include("partials/_horizontal-navbar.ejs") -%>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+
+            
+
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+                <div class="card" >
+
+
+            <div class="card-header">
+             
+              <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
+                <div class="d-flex align-items-center">
+                  <a href="#">
+                    <p class="m-0 pe-3">Dashboard</p>
+                  </a>
+                  <a class="ps-3 me-4" href="#">
+                    <p class="m-0">ADE-00234</p>
+                  </a>
+                </div>
+                <a href="property" type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
+                  <i class="mdi mdi-eye"></i> My properties</a>
+              </div>
+            </div>
+            <%for (let count = 0; count < props.length; count++) { %>
+
+                  <div class="card-body overflow-auto" style="min-height:80vh;max-height:80vh;">
+
+                    <form action="add_property" method="POST"  enctype="multipart/form-data" class="row">
+
+                      <div class="form-group col-lg-3">
+                        <label for="">Property Name</label>
+                        <input name="name" value="<%=prop[count].property_name%>" type="text" class="form-control" placeholder="Property Name">
+                      </div>
+  
+                      <div class="form-group col-lg-3">
+                        <label for="">Property Cost</label>
+                        <input value="<%=prop[count].property_cost%>" name="cost" type="text" class="form-control" placeholder="Property Cost">
+                      </div>
+  
+                      <div class="form-group col-lg-3">
+                        <label for="">Property Type</label>
+                        <select name="type" type="text" required class="form-control-sm custom-select select2" >
+                          <option value="<%=prop[count].property_type%>">value="<%=prop[count].property_type%>"</option>
+                          <option value="1">House</option>
+                        </select>
+                      </div>
+  
+                      <div class="form-group col-lg-3">
+                        <label for="">Property Location</label>
+                        <input value="<%=prop[count].property_location%>" name="location" required type="text" class="form-control" placeholder="Property Cost">
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="">Bed Rooms</label>
+                        <input name="bed" min="0" required type="number" value="<%=prop[count].property_bedrooms%>" class="form-control" placeholder="Property Cost">
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="">Bathrooms</label>
+                        <input min="0" required name="bath" value="<%=prop[count].property_bedrooms%>" type="number" class="form-control" placeholder="Property Cost">
+                      </div>
+
+                      <div class="form-group col-lg-12">
+                        <label for="">Description</label>
+                        <textarea  name="desc" type="text"  required class="form-control" placeholder="Property Description">value="<%=prop[count].property_desc%>"</textarea>
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="">Photos</label>
+
+                        <img src="assets/images/<%=prop[count].property_image%>" alt="">
+                        <input name="photos" type="file"  class="form-control" placeholder="Property Images">
+                      </div>
+  
+                      <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <button class="btn btn-primary btn-sm">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+  
+                      
+                    </form>
+                  </div>
+                  <%}%>
+                </div>
+              </div>
+            </div>
+
+
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <%- include("partials/_footer.ejs") -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <%- include("partials/_scripts.ejs") -%>
+  </body>
+</html>

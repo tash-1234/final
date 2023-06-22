@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/_header.ejs")-%>
+
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_horizontal-navbar.html -->
+     
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+            <div class="row justify-content-center">
+              <div class="col-lg-4">
+                <div class="card" >
+
+                  <div class="card-body overflow-auto" style="min-height:80vh">
+
+                    <h3 class="heading text-center">Create your Account</h3>
+                    <form action="register" method="POST"   class="row">
+                    <%- include("partials/_session_messages.ejs") -%>
+                    <div class="form-group col-lg-12">
+                        <label for="">Full Name</label>
+                        <input required name="name" type="text" class="form-control" placeholder="Full Name">
+                      </div>
+
+                      <div class="form-group col-lg-12">
+                        <label for="">Phone</label>
+                        <input required name="contact" type="text" class="form-control" placeholder="Phone">
+                      </div>
+
+                      <div class="form-group col-lg-12">
+                        <label for="">Register as:</label>
+                        <select required name="role" type="text" class="bg-light form-control form-control-lg ">
+                            <option value="landlord">Land Lord</option>
+                            <option value="tenant">Tenant</option>
+                        </select>
+                      </div>
+  
+                      <div class="form-group col-lg-12">
+                        <label for="password">Password</label>
+                        <input required name="password" type="password" class="form-control" placeholder="Password">
+                      </div>
+  
+
+                      <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <button class="btn btn-primary btn-sm">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                    <br>
+                    <p class="text-center">Have an account? Login <a href="login">Here</a> </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <%- include("partials/_footer.ejs") -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <%- include("partials/_scripts.ejs") -%>
+  </body>
+</html>

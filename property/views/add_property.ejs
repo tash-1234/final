@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/_header.ejs")-%>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_horizontal-navbar.html -->
+      <%- include("partials/_horizontal-navbar.ejs") -%>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+                <div class="card" >
+                  <div class="card-body overflow-auto" style="min-height:80vh;max-height:80vh;">
+
+                    <form action="add_property" method="POST"   class="row">
+
+                      <input type="hidden" name="owner_id" value="<%=user.user_id%>">
+                      <div class="form-group col-lg-4">
+                        <label for="">Property Name</label>
+                        <input name="name" type="text" class="form-control" placeholder="Property Name">
+                      </div>
+  
+                      <div class="form-group col-lg-4">
+                        <label for="">Property Cost</label>
+                        <input name="cost" type="text" class="form-control" placeholder="Property Cost">
+                      </div>
+  
+                      <div class="form-group col-lg-4">
+                        <label for="">Property Type</label>
+                        <select name="type" type="text" required class="form-control form-control-sm custom-select select2" >
+                          <option value="">Select type</option>
+                          <option value="1">House</option>
+                        </select>
+                      </div>
+  
+                      <div class="form-group col-lg-6">
+                        <label for="">Property Location</label>
+                        <input name="location" required type="text" class="form-control" placeholder="Property Cost">
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="">Property map</label>
+                        <input name="maps_link" required type="text" class="form-control" placeholder="Google maps link here..">
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="">Bed Rooms</label>
+                        <input name="bed" min="0" required type="number" class="form-control" placeholder="Property Cost">
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="">Bathrooms</label>
+                        <input min="0" required name="bath" type="number" class="form-control" placeholder="Property Cost">
+                      </div>
+
+                      <div class="form-group col-lg-12">
+                        <label for="">Description</label>
+                        <textarea  name="desc" type="text" required class="form-control" placeholder="Property Description"></textarea>
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="">Photos</label>
+                        <input name="photo" type="file"  class="form-control" placeholder="Property Images">
+                      </div>
+  
+                      <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <button class="btn btn-primary btn-sm">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <%- include("partials/_footer.ejs") -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <%- include("partials/_scripts.ejs") -%>
+  </body>
+</html>
